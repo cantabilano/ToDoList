@@ -84,24 +84,22 @@ class TableTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            items.remove(at: (indexPath as NSIndexPath).row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            
             let deleteTableView = UIAlertController(title : "사용자의 모든 기기에서 삭제하겠습니까?", message: "이 할일 목록이 사용자의 모든 기기에서 삭제됩니다.", preferredStyle:  UIAlertController.Style.alert)
 //            let deleteAction = UIAlertAction(title: "예", style: UIAlertAction.Style.default, handler: nil)
-//            let cancelAction = UIAlertAction(title: "아니오", style: UIAlertAction.Style.default, handler: nil)
             let deleteAction = UIAlertAction(title: "예", style: .default) { _ in
                 // Handle deletion here
-                items.remove(at: indexPath.row)
+                items.remove(at: (indexPath as NSIndexPath).row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
+            
+            let cancelAction = UIAlertAction(title: "아니오", style: UIAlertAction.Style.default, handler: nil)
+//            let cancelAction = UIAlertAction(title: "아니오", style: .default) { _ in
+//                // Handle the case where the user chooses not to delete
+//                print("Item not deleted")
+//                // You can perform additional actions if needed
+//            }
 
-            let cancelAction = UIAlertAction(title: "아니오", style: .default) { _ in
-                // Handle the case where the user chooses not to delete
-                print("Item not deleted")
-                // You can perform additional actions if needed
-            }
-            
-            
             deleteTableView.addAction(deleteAction)
             deleteTableView.addAction(cancelAction)
             present(deleteTableView, animated: true, completion: nil)
