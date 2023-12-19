@@ -9,17 +9,19 @@ import UIKit
 
 
 var items: [TaskItem] = [
-    TaskItem(title: "To Do List 추가하기", isCompleted: false),
-    TaskItem(title: "플러스 버튼을 누르세요.", isCompleted: false)
+    TaskItem(title: "To Do List 추가하기", isCompleted: false, regDate: Date()),
+    TaskItem(title: "플러스 버튼을 누르세요.", isCompleted: false, regDate: Date())
 ]
 
 class TaskItem {
     var title: String
     var isCompleted: Bool
+    var regDate: Date
     
-    init(title: String, isCompleted: Bool) {
+    init(title: String, isCompleted: Bool, regDate: Date) {
         self.title = title
         self.isCompleted = isCompleted
+        self.regDate = regDate
     }
 }
 
@@ -62,7 +64,7 @@ class TableTableViewController: UITableViewController {
 
         // Configure the cell...
         let currentItem = items[indexPath.row]
-                cell.textLabel?.text = currentItem.title
+                cell.textLabel?.text = "\(currentItem.title) - \(currentItem.regDate.toString("yyyy-MM-dd"))"
                 cell.accessoryType = currentItem.isCompleted ? .checkmark : .none
 
         return cell
@@ -84,6 +86,25 @@ class TableTableViewController: UITableViewController {
             // Delete the row from the data source
             items.remove(at: (indexPath as NSIndexPath).row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            let deleteTableView = UIAlertController(title : "사용자의 모든 기기에서 삭제하겠습니까?", message: "이 할일 목록이 사용자의 모든 기기에서 삭제됩니다.", preferredStyle:  UIAlertController.Style.alert)
+//            let deleteAction = UIAlertAction(title: "예", style: UIAlertAction.Style.default, handler: nil)
+//            let cancelAction = UIAlertAction(title: "아니오", style: UIAlertAction.Style.default, handler: nil)
+            let deleteAction = UIAlertAction(title: "예", style: .default) { _ in
+                // Handle deletion here
+                items.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+
+            let cancelAction = UIAlertAction(title: "아니오", style: .default) { _ in
+                // Handle the case where the user chooses not to delete
+                print("Item not deleted")
+                // You can perform additional actions if needed
+            }
+            
+            
+            deleteTableView.addAction(deleteAction)
+            deleteTableView.addAction(cancelAction)
+            present(deleteTableView, animated: true, completion: nil)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
@@ -130,4 +151,12 @@ class TableTableViewController: UITableViewController {
 //    }
 
 
+}
+
+extension Date {
+    func toString(_ format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: self)
+    }
 }

@@ -28,7 +28,7 @@ class AddViewController: UIViewController {
     //    }
     @IBAction func btnAddItem(_ sender: UIButton) {
            if let newItemTitle = textFieldAddItem.text, !newItemTitle.isEmpty {
-               let newItem = TaskItem(title: newItemTitle, isCompleted: false)
+               let newItem = TaskItem(title: newItemTitle, isCompleted: false, regDate: Date())
                items.append(newItem)
                textFieldAddItem.text = ""
                // Optionally, you can print or do something else with the added item
