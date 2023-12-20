@@ -48,7 +48,72 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rKT-1b-oJg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1460" y="-324"/>
+            <point key="canvasLocation" x="1458.7786259541983" y="-324.64788732394368"/>
+        </scene>
+        <!--휴지통-->
+        <scene sceneID="Usn-8x-JJB">
+            <objects>
+                <tableViewController id="TzG-Bb-blp" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="5EY-RD-Lcs">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ce1-fE-TF9">
+                                <rect key="frame" x="0.0" y="50" width="393" height="44.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ce1-fE-TF9" id="Ubv-fa-pvO">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="44.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="UtW-oc-ApF" kind="show" id="cja-5x-QzD"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="TzG-Bb-blp" id="umO-h9-xb1"/>
+                            <outlet property="delegate" destination="TzG-Bb-blp" id="ADh-Af-jMg"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="휴지통" id="MWf-NT-QoZ"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UbD-Bg-Bni" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1269" y="864"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="2As-Q6-7dA">
+            <objects>
+                <viewController id="UtW-oc-ApF" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rXV-f5-sNQ">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="MAb-bC-iNF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="JLa-t9-aoJ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ebm-0r-Blm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2050" y="864"/>
+        </scene>
+        <!--휴지통-->
+        <scene sceneID="HWe-jS-Tr2">
+            <objects>
+                <navigationController id="gSf-L8-upk" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="휴지통" id="NH0-qc-stt"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EeX-7u-a6j">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="TzG-Bb-blp" kind="relationship" relationship="rootViewController" id="mej-KI-PD3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2I8-je-pmz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="392" y="736"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="K8m-XN-m8e">
@@ -278,22 +343,6 @@
             </objects>
             <point key="canvasLocation" x="-732" y="769"/>
         </scene>
-        <!--휴지통-->
-        <scene sceneID="S5R-hr-xF0">
-            <objects>
-                <viewController id="GLy-rO-b92" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="dHl-tY-4Hy">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="8c1-Ja-0dL"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="휴지통" id="TTM-hc-oew"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4Ew-gB-q6G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="558" y="769"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ex9-FG-KtP">
             <objects>
@@ -306,7 +355,7 @@
                     <connections>
                         <segue destination="vXh-Oc-4ik" kind="relationship" relationship="viewControllers" id="1x2-KQ-agU"/>
                         <segue destination="SfO-05-25N" kind="relationship" relationship="viewControllers" id="5cY-NT-zKN"/>
-                        <segue destination="GLy-rO-b92" kind="relationship" relationship="viewControllers" id="yor-cE-J3d"/>
+                        <segue destination="gSf-L8-upk" kind="relationship" relationship="viewControllers" id="vs9-yU-DTw"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3OG-P7-Snl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

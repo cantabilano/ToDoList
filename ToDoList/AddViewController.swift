@@ -30,12 +30,19 @@ class AddViewController: UIViewController {
            if let newItemTitle = textFieldAddItem.text, !newItemTitle.isEmpty {
                let newItem = TaskItem(title: newItemTitle, isCompleted: false, regDate: Date())
                items.append(newItem)
+               itemsIamgeFile.append("checkbox_isuncompleted.png")
                textFieldAddItem.text = ""
                // Optionally, you can print or do something else with the added item
                print("Item added: \(newItem)")
            }
            _ = navigationController?.popViewController(animated: true)
        }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        textFieldAddItem.autocorrectionType = .no
+    }
+    
     
     /*
      // MARK: - Navigation

@@ -13,6 +13,9 @@ var items: [TaskItem] = [
     TaskItem(title: "플러스 버튼을 누르세요.", isCompleted: false, regDate: Date())
 ]
 
+var itemsIamgeFile = ["checkbox_iscompleted.png", "checkbox_isuncompleted.png"]
+
+
 class TaskItem {
     var title: String
     var isCompleted: Bool
@@ -30,17 +33,19 @@ class TableTableViewController: UITableViewController {
 
     @IBOutlet var tableViewList: UITableView!
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+//        self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // 왼쪽 edit버튼 활성화
         self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
-    // 왼쪽 edit버튼 활성화
 
+    // 뷰가 노출될 때마다 리스트의 데이터를 다시 불러옴
     override func viewWillAppear(_ animated: Bool) {
         tableViewList.reloadData()
     }
@@ -49,9 +54,10 @@ class TableTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        // section은 한 셀에 들어가는 표의 칸
+        // section은 한 셀에 들어가는 테이블(표)의 section
         return 1
     }
+    
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -62,11 +68,18 @@ class TableTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
 
-        // Configure the cell...
+        // Configure the cell... 셀을 설정하기 위한 프로퍼티
         let currentItem = items[indexPath.row]
                 cell.textLabel?.text = "\(currentItem.title) - \(currentItem.regDate.toString("yyyy-MM-dd"))"
-                cell.accessoryType = currentItem.isCompleted ? .checkmark : .none
+        //        cell.accessoryType = currentItem.isCompleted ? .checkmark : .none
+                
+        // Get the image file name based on completion status
+        let imageName = currentItem.isCompleted ? itemsIamgeFile[0] : itemsIamgeFile[1]
 
+        // Set the image to the cell
+        cell.imageView?.image = UIImage(named: imageName)
+        
+        
         return cell
     }
     
@@ -90,7 +103,9 @@ class TableTableViewController: UITableViewController {
             let deleteAction = UIAlertAction(title: "예", style: .default) { _ in
                 // Handle deletion here
                 items.remove(at: (indexPath as NSIndexPath).row)
+                itemsIamgeFile.remove(at: (indexPath as NSIndexPath).row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
+                
             }
             
             let cancelAction = UIAlertAction(title: "아니오", style: UIAlertAction.Style.default, handler: nil)
@@ -102,28 +117,39 @@ class TableTableViewController: UITableViewController {
 
             deleteTableView.addAction(deleteAction)
             deleteTableView.addAction(cancelAction)
+            
             present(deleteTableView, animated: true, completion: nil)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    
+    // 삭제버튼 한글로 변경
     override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return  "지우기"
     }
 
-    
+    // edit 기능에서 tableView 위치 변경
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
         let itemToMove = items.remove(at: fromIndexPath.row)
+        _ = itemsIamgeFile
         items.insert(itemToMove, at: to.row)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            // Toggle the completion status when a cell is selected
-            items[indexPath.row].isCompleted.toggle()
-            tableView.reloadRows(at: [indexPath], with: .automatic)
+        // Toggle the completion status when a cell is selected
+        items[indexPath.row].isCompleted.toggle()
+ 
+        // Update the image based on completion status
+        let imageName = items[indexPath.row].isCompleted ? itemsIamgeFile[0] : itemsIamgeFile[1]
+        
+        // Update the cell's image
+        if let cell = tableView.cellForRow(at: indexPath) {
+            cell.imageView?.image = UIImage(named: imageName)
         }
+        // Deselect the row to avoid showing the selection highlight
+            tableView.deselectRow(at: indexPath, animated: true)
+    }
 
     /*
     // Override to support conditional rearranging of the table view.
@@ -133,6 +159,7 @@ class TableTableViewController: UITableViewController {
     }
     */
 
+    
 
     // MARK: - Navigation
 //    // 세그웨이를 이용하여 뷰를 이동하는 함수

@@ -22,10 +22,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         myWebView.load(myRequest)
     }
     
-    
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

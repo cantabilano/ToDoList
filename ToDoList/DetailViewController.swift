@@ -43,7 +43,6 @@ class DetailViewController: UIViewController, UITextViewDelegate {
     */
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
         saveText()
     }
 
