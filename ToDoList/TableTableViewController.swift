@@ -38,6 +38,7 @@ class TableTableViewController: UITableViewController {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
+        //프레젠테이션 간의 선택사항을 보존하려면 다음 행의 주석을 해제합니다
 //        self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
