@@ -15,6 +15,9 @@
 		C87C6ACE2B2D10420072A175 /* TableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87C6ACD2B2D10420072A175 /* TableTableViewController.swift */; };
 		C87C6AD02B2D10500072A175 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87C6ACF2B2D10500072A175 /* AddViewController.swift */; };
 		C87C6AD22B2D10560072A175 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87C6AD12B2D10560072A175 /* DetailViewController.swift */; };
+		C8918D3C2B3546310050C15A /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8918D3B2B3546310050C15A /* ToDoTableViewCell.swift */; };
+		C8918D402B3555C80050C15A /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8918D3F2B3555C80050C15A /* String+extension.swift */; };
+		C8918D432B3567A80050C15A /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8918D422B3567A80050C15A /* TaskItem.swift */; };
 		C8CA10DB2B304F240037AEC9 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CA10DA2B304F240037AEC9 /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +32,9 @@
 		C87C6ACD2B2D10420072A175 /* TableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableTableViewController.swift; sourceTree = "<group>"; };
 		C87C6ACF2B2D10500072A175 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		C87C6AD12B2D10560072A175 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C8918D3B2B3546310050C15A /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
+		C8918D3F2B3555C80050C15A /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
+		C8918D422B3567A80050C15A /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 		C8CA10DA2B304F240037AEC9 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,12 +74,47 @@
 				C87C6ACD2B2D10420072A175 /* TableTableViewController.swift */,
 				C87C6ACF2B2D10500072A175 /* AddViewController.swift */,
 				C87C6AD12B2D10560072A175 /* DetailViewController.swift */,
-				C8CA10DA2B304F240037AEC9 /* WebViewController.swift */,
+				C8918D3D2B3546410050C15A /* Cells */,
+				C8918D442B3567B80050C15A /* Model */,
+				C8918D412B3555CF0050C15A /* Extension */,
+				C8918D3E2B3546500050C15A /* WebView */,
 				C87C6AC22B2D0F8E0072A175 /* Assets.xcassets */,
 				C87C6AC42B2D0F8E0072A175 /* LaunchScreen.storyboard */,
 				C87C6AC72B2D0F8E0072A175 /* Info.plist */,
 			);
 			path = ToDoList;
+			sourceTree = "<group>";
+		};
+		C8918D3D2B3546410050C15A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C8918D3B2B3546310050C15A /* ToDoTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		C8918D3E2B3546500050C15A /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				C8CA10DA2B304F240037AEC9 /* WebViewController.swift */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
+		C8918D412B3555CF0050C15A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C8918D3F2B3555C80050C15A /* String+extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		C8918D442B3567B80050C15A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C8918D422B3567A80050C15A /* TaskItem.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,8 +188,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8918D402B3555C80050C15A /* String+extension.swift in Sources */,
+				C8918D3C2B3546310050C15A /* ToDoTableViewCell.swift in Sources */,
 				C87C6AD02B2D10500072A175 /* AddViewController.swift in Sources */,
 				C8CA10DB2B304F240037AEC9 /* WebViewController.swift in Sources */,
+				C8918D432B3567A80050C15A /* TaskItem.swift in Sources */,
 				C87C6ACE2B2D10420072A175 /* TableTableViewController.swift in Sources */,
 				C87C6AD22B2D10560072A175 /* DetailViewController.swift in Sources */,
 				C87C6ABA2B2D0F8D0072A175 /* AppDelegate.swift in Sources */,

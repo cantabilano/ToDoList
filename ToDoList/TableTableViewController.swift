@@ -7,27 +7,14 @@
 import SwiftUI
 import UIKit
 
-
+// 더미데이터
 var items: [TaskItem] = [
-    TaskItem(title: "To Do List 추가하기", isCompleted: false, regDate: Date()),
-    TaskItem(title: "플러스 버튼을 누르세요.", isCompleted: false, regDate: Date())
+    TaskItem(id: 0, title: "To Do List 추가하기", isCompleted: false, regDate: Date()),
+    TaskItem(id: 1, title: "플러스 버튼을 누르세요.", isCompleted: false, regDate: Date())
 ]
 
+// 완료여부 체크박스 이미지 프로퍼티
 var itemsIamgeFile = ["checkbox_iscompleted.png", "checkbox_isuncompleted.png"]
-
-
-class TaskItem {
-    var title: String
-    var isCompleted: Bool
-    var regDate: Date
-    
-    init(title: String, isCompleted: Bool, regDate: Date) {
-        self.title = title
-        self.isCompleted = isCompleted
-        self.regDate = regDate
-    }
-}
-
 
 class TableTableViewController: UITableViewController {
 
@@ -94,21 +81,25 @@ class TableTableViewController: UITableViewController {
     */
 
     
-    // Override to support editing the table view.
+    // Override to support editing the table view. -> 삭제 구현 매소드
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        // editingStyle를 delete로 구현하는 매소드
         if editingStyle == .delete {
             // Delete the row from the data source
             
+            // UIAlertController을 활용한 삭제 프로퍼티
             let deleteTableView = UIAlertController(title : "사용자의 모든 기기에서 삭제하겠습니까?", message: "이 할일 목록이 사용자의 모든 기기에서 삭제됩니다.", preferredStyle:  UIAlertController.Style.alert)
 //            let deleteAction = UIAlertAction(title: "예", style: UIAlertAction.Style.default, handler: nil)
+            //삭제 프로퍼티 : "예"를 보여주며 해당 row의 var items 프로퍼티와 완료여부 이미지를 삭제하는 프로퍼티
             let deleteAction = UIAlertAction(title: "예", style: .default) { _ in
                 // Handle deletion here
                 items.remove(at: (indexPath as NSIndexPath).row)
                 itemsIamgeFile.remove(at: (indexPath as NSIndexPath).row)
-                tableView.deleteRows(at: [indexPath], with: .fade)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
                 
             }
             
+            // 삭제를 취소하는 프로퍼티
             let cancelAction = UIAlertAction(title: "아니오", style: UIAlertAction.Style.default, handler: nil)
 //            let cancelAction = UIAlertAction(title: "아니오", style: .default) { _ in
 //                // Handle the case where the user chooses not to delete
@@ -137,14 +128,17 @@ class TableTableViewController: UITableViewController {
         items.insert(itemToMove, at: to.row)
     }
     
+    
+    // row 선택시 '완료' 구현 매소드
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print("select")
         // Toggle the completion status when a cell is selected
         items[indexPath.row].isCompleted.toggle()
  
-        // Update the image based on completion status
+        // Update the image based on completion status -> 체크박스 이미지 구현 프로퍼티
         let imageName = items[indexPath.row].isCompleted ? itemsIamgeFile[0] : itemsIamgeFile[1]
         
-        // Update the cell's image
+        // Update the cell's image -> 체크박스 이미지 구현 옵셔널 매소드
         if let cell = tableView.cellForRow(at: indexPath) {
             cell.imageView?.image = UIImage(named: imageName)
         }
